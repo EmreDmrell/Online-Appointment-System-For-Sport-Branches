@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Facility Feedback</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/feedback_list.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="feedback-title">Feedback</p>
+    </div>
+
+    <!-- <div id="feedback-nav">
+        <div><a href="/admin/manageFeedback" class="normal-button">service</a></div>
+        <div><a href="/admin/feedbackOverall" class="normal-button">overall</a></div>
+        <div><div class="active-button">facility</div></div>
+        <div><a href="/admin/feedbackOther" class="normal-button">other</a></div>
+    </div> -->
+    
+    <div id="feedback-nav">
+        <div th:each="topic: ${topics}">
+            <th:block th:if="${topic != thisTopic}">
+                <a th:href="@{'/admin/feedback/' + ${topic}}" class="normal-button" th:text="${topic}"></a>
+            </th:block>
+            <th:block th:unless="${topic != thisTopic}">
+                <a th:href="@{'/admin/feedback/' + ${topic}}" class="active-button" th:text="${topic}"></a>
+            </th:block>
+        </div>
+    </div>
+    
+
+    <p class="feedback-header" th:text="${thisTopic}"></p>
+
+    <table>
+        <colgroup>
+            <col style="width:5%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:50%">
+        </colgroup>  
+        <tr>
+            <th>no</th>
+            <th>rating</th>
+            <th>recommend</th>
+            <th>user</th>
+            <th>comment</th>
+        </tr>
+        <tr th:each="feedback: ${feedbacks}">
+            <td th:text="${feedback.id}"></td>
+            <td th:text="${feedback.star + '/5'}"></td>
+            <td>
+                <span th:if="${feedback.recommend}">YES</span>
+                <span th:unless="${feedback.recommend}">NO</span>
+            </td>
+            <td th:text="${feedback.user ne null} ? ${feedback.user.username} : 'ANNONYMOUS'"></td>
+            <td th:text="${feedback.body}"></td>
+        </tr>
+    </table>
+
+    <div th:replace="fragments\footer"></div>
+
+</body>
+</html>

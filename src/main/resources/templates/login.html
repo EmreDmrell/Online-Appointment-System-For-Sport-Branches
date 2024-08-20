@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Login</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link th:href="@{/css/login_signup.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+
+    <div id="login-section">
+        <div id="home-sigup">
+            <p class="jack">
+                <span>JACK'S </span><span>SPORT</span>
+            </p>
+        </div>
+        <div id="form-wrap">
+            <div id="login-form">
+                <form th:action="@{/user/login}" method="post">
+                    <h2 class="h2-title">LOGIN TO YOUR ACCOUNT</h2>
+
+                    <!-- This one -->
+                    <!-- <p class="regular-text" th:unless="${param.error}">Welcome back! Please log in to manage your booking</p> -->
+                    <p class="regular-text">Welcome back! Please log in to manage your booking</p>
+                    <h3 class="h3-title">USERNAME</h3>
+                    <input type="text" name="username" placeholder="" class="text-input"/> <br>
+                    <h3 class="h3-title">PASSWORD</h3>
+                    <input type="password" name="password" placeholder="" class="text-input"/> <br>
+                    <div th:if="${param.error}" class="error-text">Invalid username and password.</div>
+                    <button type="submit" class="normal-button" id="signin-button">SIGN IN</button>
+                </form>
+                    <p class="regular-text">Don't have an account?</p>
+                    <a href="/user/register" id="signup-in-login"><button class="normal-button">SIGN UP</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

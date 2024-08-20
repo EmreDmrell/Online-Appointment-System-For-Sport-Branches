@@ -1,0 +1,30 @@
+<nav id="top-nav-bar">
+    <div id="top-nav-logo-container">
+        <a id="logo" href="/index">JACK'S</a>
+    </div>
+    <div id="top-nav-items-container" sec:authorize="isAnonymous()">
+        <a class="nav-items middle-nav-item book-now" href="/booking/location">BOOK NOW</a>
+        <a class="nav-items middle-nav-item" href="/booking/list">MY BOOKING</a>
+        <a class="nav-items login" href="/login">LOGIN</a>
+    </div>
+
+    <div id="top-nav-items-container" sec:authorize="hasAnyAuthority('USER', 'BAN')">
+        <a class="nav-items middle-nav-item book-now" href="/booking/location">BOOK NOW</a>
+        <a class="nav-items middle-nav-item" href="/booking/list">MY BOOKING</a>
+        <a class="nav-items login" href="/user/profile" th:text="${#authentication.getPrincipal().getUser().getUsername()}"></a>
+    </div>
+
+    <div id="nav-contaner" sec:authorize="hasAnyAuthority('ADMIN')">
+        <div id="top-nav-items-container-admin">
+            <a class="nav-items middle-nav-item book-now" href="/admin/banner/form">MANAGE BANNER</a>
+            <a class="nav-items middle-nav-item" href="/admin/userlist">MANNAGE USER</a>
+            <a class="nav-items middle-nav-item" href="/admin/feedback/all">FEEDBACK</a>
+            <a class="nav-items login" href="/user/profile">ADMIN</a>
+        </div>
+        <div id="bottom-nav-items-container">
+            <a class="nav-items middle-nav-item book-now" href="/admin/branch/form">add branch</a>
+            <a class="nav-items middle-nav-item login" href="/admin/booking/location">booking list</a>
+        </div>
+    </div>
+    
+</nav>

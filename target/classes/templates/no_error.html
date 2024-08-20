@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Error</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/completion.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+
+    <div id="booking-complete-container">
+        <div id="ban"></div>
+        <hr>
+        <p id="error-title">Error!</p>
+        <hr>
+        <p class="explanation-text">Page restricted! Please contact admin for more information.</p>
+        <hr>
+        <a class="normal-button" href="/index">home</a>
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Banner</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/banner.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="banner-title">Manage Banner</p>
+    </div>
+
+    <form th:action="@{/admin/banner/save}" th:object="${banner}" method="post">
+        
+        <p class="question-title">banner title</p>
+        <div id="checkboxes-container">
+            <label class="checkbox-container" for="promotion-checkbox">
+                <input type="radio" id="promotion-checkbox" name="feedback-type" th:field="*{title}" value="promotion!"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">promotion!</span>
+            </label>
+
+            <label class="checkbox-container" for="attention-checkbox">
+                <input type="radio" id="attention-checkbox" name="feedback-type" th:field="*{title}" value="attention!"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">attention!</span>
+            </label>
+
+            <label class="checkbox-container" for="discount-checkbox">
+                <input type="radio" id="discount-checkbox" name="feedback-type" th:field="*{title}" value="discount!"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">discount!</span>
+            </label>
+        </div>
+
+        <p class="question-title">banner</p>
+        <textarea name="" id="review-textarea" cols="100" rows="10" th:field="*{body}"></textarea>
+
+
+        <div id="button-container">
+            <button type="submit" class="normal-button submit-banner" id="signup-button">Submit</button>
+            <hr>
+            <a href="/admin/banner/delete" class="normal-button delete-banner">delete old banner</a>
+        </div>
+
+    </form>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Sign Up</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link th:href="@{/css/login_signup.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+
+    <div id="put-form-to-middle-wrapper">
+        <form th:action="@{/user/process_register}" th:object="${user}" method="post" id="signup-wrapper" onsubmit="return validateForm()">
+            <h1 class="h1-title" id="signup-title">CREATE YOUR ACCOUNT</h1>
+            <div id="firstname-container">
+                <h3 class="h3-title">FIRSTNAME</h3>
+                <input type="text" name="firstname" placeholder="" class="text-input" id="firstname" th:field="*{firstName}"/> <br>
+            </div>
+            <div id="surname-container">
+                <h3 class="h3-title">LASTNAME</h3>
+                <input type="text" name="lastname" placeholder="" class="text-input" id="lastname" th:field="*{lastName}"/> <br>
+            </div>
+            <div id="username-container">
+                <h3 class="h3-title">USERNAME</h3>
+                <input type="text" name="username" placeholder="" class="text-input" id="username" th:field="*{username}"/> <br>
+            </div>
+            <div id="email-container">
+                <h3 class="h3-title">EMAIL</h3>
+                <input type="email" name="email" placeholder="" class="text-input" id="email" th:field="*{email}"/> <br>
+            </div>
+            <div id="password-container">
+                <h3 class="h3-title">PASSWORD</h3>
+                <input type="password" name="password" placeholder="" class="text-input" id="password" th:field="*{password}"/> <br>
+            </div>
+            <div id="c-password-container">
+                <h3 class="h3-title">CONFIRM PASSWORD</h3>
+                <input type="password" name="confirm_password" placeholder="" id="confirm_password" class="text-input"/> <br>
+            </div>
+            
+            <button type="submit" class="normal-button" id="signup-button">SIGN UP</button>
+        </form>
+    </div>
+    <p id="alert-value"></p>
+
+    <div th:replace="fragments\footer"></div>
+
+    <script type="text/javascript" th:src="@{/js/signup.js}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Facilities</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/facilities.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="facilities-title">facilities</p>
+        <p class="nav-span">
+            <a href="/booking/location"><span id="booking-branch" th:text="${branch.name}"></span></a>
+            <span>facility</span>
+        </p>
+        <p class="section-line"></p>
+    </div>
+
+    <div class="facility-container" th:each="sport,iter: ${sports}">
+
+        <div th:if="${iter.index%2==0}" class="odd-container">
+            <div class="sport-container-odd">
+                <p class="sport-title" th:text="${sport.name}"></p>
+                <p class="sport-description" th:text="${sport.description}"></p>
+                <a th:href="@{'/booking/' + ${branch.branchCode} + '/' + ${sport.id}}" class="normal-button">Book Now</a>
+            </div>
+            <div th:id="${sport.name + '-picture'}" class="picture"></div>
+        </div>
+
+        <div th:unless="${iter.index%2==0}" class="even-container">
+            <div class="sport-container-even">
+                <p class="sport-title" th:text="${sport.name}"></p>
+                <p class="sport-description" th:text="${sport.description}"></p>
+                <a th:href="@{'/booking/' + ${branch.branchCode} + '/' + ${sport.id}}" class="normal-button">Book Now</a>
+            </div>
+            <div th:id="${sport.name + '-picture'}" class="picture"></div>
+        </div>
+        
+        <p class="section-line"></p>
+
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --black: #000000;
+    --ghost-white: #F4F4F9;
+    /* --charcoal: #2F4550;
+    --cadet: #586F7C;
+    --powder-blue: #B8DBD9;
+    --bluer: rgb(12, 128, 205); dont use any more*/
+    /* use this rn */
+    --space: #252A4E;
+    --orange-blaze: #ff6600; 
+    --space-trans: #252a4ea9;
+    --orange-trans: #ff6600a9; 
+    /* with black and white */
+}
+html {
+    height: 100%;
+    /* make it 100% */
+}
+:root{
+    font-size: 16px;
+    /* background-color: white; */
+}
+body{
+    background-color: var(--space);
+    min-height: 100%;
+}
+
+.jack{
+    color: var(--orange-blaze);
+    font-family: 'Bebas', sans-serif;
+    font-size: 7rem;
+    margin-left: 30px;
+    cursor: default;
+}
+#contact-title{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    font-size: 4rem;
+    margin-left: 30px;
+    margin-top: 20px;
+    cursor: default;
+}
+
+.h2-title{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+#content-container p{
+    color: var(--ghost-white);
+    font-family: 'Montserrat';
+    margin-left: 40px;
+    margin-top: 10px;
+    font-size: 0.7rem;
+}
+#content-container:last-child{
+    margin-bottom: 50px;
+}
+
+@media (min-width: 1000px){
+    #title-container{
+        grid-area: title;
+    }
+    #content-container{
+        grid-area: contact;
+        margin-right: 100px;
+    }
+    #body-container{
+        display: grid;
+        grid-template-areas: 'title contact';
+        place-items: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .jack{
+        font-size: 10rem;
+    }
+    .jack span{
+        display: block;
+    }
+    #contact-title{
+        font-size: 6rem;
+    }
+    #content-container p{
+        font-size: 1rem;
+    }
+}

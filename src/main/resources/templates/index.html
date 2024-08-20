@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Home</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    <div id="home-container">
+        <p class="home-title">
+            JACK'S SPORTS
+        </p>
+        <div class="home-body">
+            <h2 class="home-body-title">JUST A CORNER AROUND YOUR HOUSE</h2>
+            <p class="home-description">Jack's sports center will change the way you work out and enjoying sports. A huge leap revolutionary working-out practice that you've never experience before.</p>
+        </div>
+        <div id="home"></div>
+    </div>
+
+    <th:block th:if="${banner.isPresent()}">
+        <div id="announcement-container">
+            <span id="slogan" th:each="i: ${#numbers.sequence(1, 25)}" th:text="${banner.get().title}"></span>
+            <p id="banner-text" th:text="${banner.get().body}"></p>
+            <span id="slogan-upsidedown" th:each="i: ${#numbers.sequence(1, 25)}" th:text="${banner.get().title}"></span>
+        </div>
+    </th:block>
+    
+    
+    <div class="about-us">
+        <h2 class="h2-title">About Us</h2>
+        <div class="why-jack">
+            <h3 class="about-us-header">Why jack's?</h3>
+            <p class="about-us-description">Working and playing sport out should be on your terms because life is busy enough and your time is precious. So we’ve designed a gym for people like you who want to get results without spending hours and hours at the gym.</p>
+        </div>
+        <div class="trainer">
+            <h3 class="about-us-header">Trainer</h3>
+            <p class="about-us-description">We have qualified friendly Personal Trainers with specialist skills such as rehabilitation, pre/post natal, weight loss and strength building, as well as specific sports training. So why choose a Personal Trainer?</p>
+        </div>
+    </div>
+
+    <div class="find">
+        <h2 class="h2-title">Where to find us?</h2>
+        <div id="all-place-container">
+            <a href="/booking/location#bilbao" id="bilbao-container" class="place-container">
+                <div class="bilbao place-picture" id="first-place">
+                    <h3 class="odd-place-title"><span>BILBAO</span></h3>
+                </div>
+            </a>
+            <a href="/booking/location#pamplona" class="place-container">
+                <div class="pamplona place-picture">
+                    <h3 class="even-place-title"><span>PAMPLONA</span></h3>
+                </div>
+            </a>
+            <a href="/booking/location#san_sebastian" class="place-container">
+                <div class="donostia place-picture">
+                    <h3 class="odd-place-title"><span>SAN SEBASTIAN</span></h3>
+                </div>
+            </a>
+            <a href="/booking/location#vitoria" class="place-container" id="last">
+                <div class="vitoria place-picture" id="last-place">
+                    <h3 class="even-place-title"><span>VITORIA</span></h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --black: #000000;
+    --ghost-white: #F4F4F9;
+    /* --charcoal: #2F4550;
+    --cadet: #586F7C;
+    --powder-blue: #B8DBD9;
+    --bluer: rgb(12, 128, 205); dont use any more*/
+    /* use this rn */
+    --space: #252A4E;
+    --orange-blaze: #ff6600; 
+    --space-trans: #252a4ea9;
+    --orange-trans: #ff6600a9; 
+    /* with black and white */
+}
+html {
+    height: 100%;
+    /* make it 100% */
+}
+:root{
+    font-size: 16px;
+    /* background-color: white; */
+}
+body{
+    background-color: var(--space);
+    min-height: 100%;
+}
+
+#home{
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 20px;
+    background-image: url(/photo/guy_running_bg.jpeg);
+    height: 500px;
+    width: auto;
+    background-size: cover;
+    grid-area: picture;
+}
+.home-title{
+    display: flex;
+    margin-left: 30px;
+    color: var(--orange-blaze);
+    font-size: 7rem;
+    margin-top: 20px;
+    font-family: 'Bebas', sans-serif;
+    grid-area: title;
+    cursor: default;
+}
+.home-body{
+    grid-area: body;
+    margin-left: 40px;
+    margin-right: 40px;
+    color: var(--ghost-white);
+}
+.home-body-title{
+    font-family: 'Bebas', sans-serif;
+    margin-top: 20px;
+}
+.home-description{
+    font-family: 'Montserrat';
+    margin-top: 10px;
+}
+.h2-title{
+    color: var(--orange-blaze);
+    font-size: 3rem;
+    margin-top: 100px;
+    margin-left: 40px;
+    font-family: 'Bebas', sans-serif;
+}
+.about-us-header{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    margin-left: 40px;
+    margin-top: 15px;
+}
+.about-us-description{
+    font-family: 'Montserrat';
+    margin-top: 10px;
+    color: var(--ghost-white);
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+.bilbao{
+    background-image: url(/photo/bilbao_processed.png);
+}
+.pamplona{
+    background-image: url(/photo/pamplona_processed.jpeg);
+    margin-top: 5px;
+}
+.donostia{
+    background-image: url(/photo/donostia_processed.jpeg);
+    margin-top: 5px;
+}
+.vitoria{
+    background-image: url(/photo/vitoria_processed.jpeg);
+    margin-top: 5px;
+}
+.place-picture{
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+}
+.odd-place-title{
+    color: var(--orange-blaze);
+    font-size: 3rem;
+    text-align: right;
+    margin-right: 40px;
+    padding: 10px;
+    font-family: 'Bebas', sans-serif;
+}
+.even-place-title{
+    color: var(--ghost-white);
+    font-size: 3rem;
+    margin-left: 40px;
+    padding: 10px;
+    font-family: 'Bebas', sans-serif;
+}
+.odd-place-title span{
+    background-color: var(--space-trans);
+    display:inline-block;
+    padding: 5px;
+}
+.even-place-title span{
+    background-color: var(--orange-trans);
+    display:inline-block;
+    padding: 5px;
+}
+#first-place{
+    margin-top: 25px;
+}
+#last-place{
+    margin-bottom: 15px;
+}
+.big-place-title{
+    background-color: transparent;
+    padding: 0px;
+}
+#all-place-container:hover > .place-container{
+    opacity: 0.35;
+}
+#all-place-container:hover > .place-container:hover{
+    opacity: 1;
+}
+
+#announcement-container{
+    margin-top: 50px;
+}
+#slogan{
+    color: var(--orange-blaze);
+    font-family: 'Bebas', sans-serif;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+#slogan-upsidedown{
+    color: var(--orange-blaze);
+    font-family: 'Bebas', sans-serif;
+    font-size: 1.5rem;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+#banner-text{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    font-size: 5rem;
+    text-align: center;
+    margin: 60px 80px 60px 80px;
+}
+
+@media (min-width: 1000px){
+    #home-container{
+    display: grid;
+    height: 700px;
+    width: 100%;
+    grid-template-areas: 'picture title'
+                        'picture body';
+    grid-template-columns: 5fr 3fr;
+    }
+    #home{
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+        height: auto;
+        margin-top: 60px;
+    }
+    .home-title{
+        letter-spacing: -6px;
+        font-size: 10rem;
+        margin-top: 60px;
+    }
+    .home-body-title{
+        margin-top: 0;
+    }
+    .about-us{
+        display: grid;
+        grid-column-gap: 50px;
+        grid-template-areas: 'title title'
+                            'why trainer';
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .why-jack{
+        grid-area: why;
+    }
+    .trainer{
+        grid-area: trainer;
+    }
+    .h2-title{
+        text-align: center;
+        grid-area: title;
+    }
+    .about-us-header{
+        color: var(--ghost-white);
+        font-family: 'Bebas', sans-serif;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+    .about-us-description{
+        font-family: 'Montserrat';
+        margin-top: 10px;
+        color: var(--ghost-white);
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

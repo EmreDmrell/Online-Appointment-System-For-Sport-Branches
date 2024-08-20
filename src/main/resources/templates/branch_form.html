@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Branch Form</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/branch_form.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="branch-title">Add Branch</p>
+    </div>
+
+    <form th:action="@{/admin/branch/save}" method="post" th:object="${branch}">
+
+        <p class="question-title">what is the branch name?</p>
+        <textarea type="text" class="input-textarea" cols="25" rows="1" th:field="*{name}"></textarea>
+
+        <p class="question-title">what is the branch code?</p>
+        <p id="branch-code">please input 3 latters, all capitalized</p>
+        <textarea type="text" class="input-textarea" cols="3" rows="1" th:field="*{branchCode}"></textarea>
+
+        <p class="question-title">what is the city name?</p>
+        <textarea type="text" class="input-textarea" cols="25" rows="1" name="city_name"></textarea>
+
+        <p class="question-title">what is the address?</p>
+        <textarea type="text" class="input-textarea" cols="50" rows="4" th:field="*{address}"></textarea>
+
+        <p class="question-title">what are the sports?</p>
+        <div id="checkboxes-container" for="service-feedback-checkbox">
+            <th:block th:each="sport: ${sports}">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="service-feedback-checkbox" name="sportList" th:value="${sport.id}"/>
+                    <span class="checkmark"></span>
+                    <span class="check-box-label" th:text="${sport.name}"></span>
+                </label>
+            </th:block>
+        </div>
+    
+        <button type="submit" class="normal-button" id="signup-button">Submit</button>
+
+    </form>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

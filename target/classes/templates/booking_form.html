@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Booking</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/booking.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+
+    <div id="secondary-nav">
+        <p id="booking-title">BOOKING</p>
+        <p class="nav-span">
+            <a href="/booking/location"><span id="booking-branch" th:text="${branch.name}"></span></a>
+            <a th:href="@{'/booking/' + ${branch.branchCode}}"><span id="booking-sport" th:text="${sport.name}"></span></a>
+            <span id="booking-date">DATE</span>
+        </p>
+        <p class="section-line"></p>
+    </div>
+
+    <form th:action="@{/booking/save}" method="post" th:object="${timeSlot}">
+        <div id="calendar">
+            <header id="calendar-header">
+                <p class="current-date">CURRENT DATE</p>
+                <div class="icons">
+                    <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                    <span id="next" class="material-symbols-rounded">chevron_right</span>
+                </div>
+            </header>
+            <div class="date">
+                <ul class="weeks">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="days"></ul>
+            </div>
+        </div>
+    
+        <div id="hidden-input">
+            <div id="date-input"></div>
+            <label for="date-checked" id="label-date-checked">this</label>
+            <input type="text" name="branchCode" th:value="${branch.branchCode}">
+            <input type="number" name="sportId" th:value="${sport.id}">
+        </div>
+        
+    
+        <p id="select-time-title">select your time slot</p>
+        <div id="time-buttons-container">
+            <input type="checkbox" id="9-10" value="9" name="timeList"/>
+            <label class="time-button" for="9-10">09:00-10:00</label>
+            <input type="checkbox" id="10-11" value="10" name="timeList"/>
+            <label class="time-button" for="10-11">10:00-11:00</label>
+            <input type="checkbox" id="11-12" value="11" name="timeList"/>
+            <label class="time-button" for="11-12">11:00-12:00</label>
+            <input type="checkbox" id="12-13" value="12" name="timeList"/>
+            <label class="time-button" for="12-13">12:00-13:00</label>
+            <input type="checkbox" id="13-14" value="13" name="timeList"/>
+            <label class="time-button" for="13-14">13:00-14:00</label>
+            <input type="checkbox" id="14-15" value="14" name="timeList"/>
+            <label class="time-button" for="14-15">14:00-15:00</label>
+            <input type="checkbox" id="15-16" value="15" name="timeList"/>
+            <label class="time-button" for="15-16">15:00-16:00</label>
+            <input type="checkbox" id="16-17" value="16" name="timeList"/>
+            <label class="time-button" for="16-17">16:00-17:00</label>
+            <input type="checkbox" id="17-18" value="17" name="timeList"/>
+            <label class="time-button" for="17-18">17:00-18:00</label>
+            <input type="checkbox" id="18-19" value="18" name="timeList"/>
+            <label class="time-button" for="18-19">18:00-19:00</label>
+            <input type="checkbox" id="19-20" value="19" name="timeList"/>
+            <label class="time-button" for="19-20">19:00-20:00</label>
+            <input type="checkbox" id="20-21" value="20" name="timeList"/>
+            <label class="time-button" for="20-21">20:00-21:00</label>
+            <input type="checkbox" id="21-22" value="21" name="timeList"/>
+            <label class="time-button" for="21-22">21:00-22:00</label>
+            <input type="checkbox" id="22-23" value="22" name="timeList"/>
+            <label class="time-button" for="22-23">22:00-23:00</label>
+            <input type="checkbox" id="23-00" value="23" name="timeList"/>
+            <label class="time-button" for="23-00">23:00-00:00</label>
+        </div>
+    
+        <div>
+            <!-- <p id="availability">availability: <span>busy</span></p> -->
+            <p id="availability">please select consecutive time</p>
+        </div>
+    
+        <button type="submit" class="normal-button">submit</button>
+    </form>
+
+    <div th:replace="fragments\footer"></div>
+    
+    <script type="text/javascript" th:src="@{/js/booking_calendar.js}"></script>
+</body>
+</html>

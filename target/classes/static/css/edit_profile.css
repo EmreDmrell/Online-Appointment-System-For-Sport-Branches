@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --black: #000000;
+    --ghost-white: #F4F4F9;
+    /* --charcoal: #2F4550;
+    --cadet: #586F7C;
+    --powder-blue: #B8DBD9;
+    --bluer: rgb(12, 128, 205); dont use any more*/
+    /* use this rn */
+    --space: #252A4E;
+    --orange-blaze: #ff6600; 
+    --space-trans: #252a4ea9;
+    --orange-trans: #ff6600a9; 
+    /* with black and white */
+    --title-margin-left-small: 30px;
+    --title-margin-left-big: 140px;
+    --icon-dimensions: 20px;
+}
+html {
+    height: 100%;
+    /* make it 100% */
+}
+:root{
+    font-size: 16px;
+}
+body{
+    background-color: var(--space);
+    min-height: 100%;
+}
+
+.h1-title{
+    color: var(--orange-blaze);
+    font-family: 'Bebas', sans-serif;
+    margin-top: 20px;
+    font-size: 7rem;
+    text-align: center;
+}
+.h2-title{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    margin-top: 50px;
+}
+.h3-title{
+    color: var(--ghost-white);
+    font-family: 'Bebas', sans-serif;
+    margin-top: 20px;
+}
+/* .edit-account-title{
+    color: var(--orange-blaze);
+    font-family: 'Bebas', sans-serif;
+    font-size: 5rem;
+    cursor: default;
+    text-transform: uppercase;
+    text-align: center;
+} */
+.text-input{
+    border: none;
+    border-bottom: 1px solid var(--ghost-white);
+    background-color: var(--space);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+    width: 100%;
+}
+input, select, textarea{
+    background-color: var(--space);
+    color: var(--ghost-white);
+    font-family: 'Montserrat';
+}
+
+textarea:focus, input:focus {
+    background-color: var(--space);
+    color: var(--ghost-white);
+    font-family: 'Montserrat';
+}
+#form-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+#put-form-to-middle-wrapper{
+    display: flex;
+    justify-content: center;
+}
+#signup-wrapper{
+    width: 60%;
+    margin-top: 20px;
+}
+#signup-button{
+    margin-left: auto;
+    margin-top: 25px;
+    grid-area: button;
+}
+
+.normal-button{
+    text-decoration: none;
+    font-family: 'Montserrat';
+    color: var(--ghost-white);
+    border: var(--ghost-white) 1px solid;
+    background: none;
+    border-radius: 20px;
+    display: flex;
+    width: fit-content;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    margin-left: 75%;
+}
+.normal-button:hover{
+    background-color: var(--orange-blaze);
+    cursor: pointer;
+}
+
+@media (min-width: 1000px){
+    /* .edit-account-title{
+        margin-top: 50px;
+    } */
+    .h1-title{
+        margin-top: 50px;
+    }
+    #form-wrap{
+        grid-area: right;
+    }
+    #form-wrap{
+        align-items: center;
+    }
+    #firstname-container{
+        grid-area: firstname;
+    }
+    #surname-container{
+        grid-area: surname;
+    }
+    #username-container{
+        grid-area: username;
+    }
+    #email-container{
+        grid-area: email;
+    }
+    #password-container{
+        grid-area: password;
+    }
+    #c-password-container{
+        grid-area: c_password;
+    }
+    #signup-wrapper{
+        display: grid;
+        grid-template-areas: 'firstname surname'
+                    'username email'
+                    'password c_password'
+                    'button button';
+        grid-template-columns: 1fr 1fr;
+    }
+    .text-input{
+        width: 90%;
+    }
+}

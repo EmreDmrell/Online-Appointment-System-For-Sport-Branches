@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Manage User Bookings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/manage_booking.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="manage-title">manage user booking</p>
+    </div>
+    <p class="branch-name" th:text="${branch.name}"></p>
+
+    <table>
+        <tr>
+            <th>username</th>
+            <th>facility</th>
+            <th>time</th>
+        </tr>
+        <tr th:each="timeSlot: ${timeSlots}">
+            <td><span class="white-text" th:text="${timeSlot.user.username}"></span></td>
+            <td th:text="${timeSlot.sport.name}"></td>
+            <td>
+                <div class="icon-container"><a th:href="@{'/booking/edit/' + ${timeSlot.id}}"><div class="edit-booking" title="edit booking"></div></a><a th:href="@{'/booking/delete/' + ${timeSlot.id}}"><div class="delete-booking" title="delete booking" onclick="return confirm('Are you sure?')"></div></a></div>
+                <span class="date-in-table" th:text="${timeSlot.date.substring(0,2) + '/' + timeSlot.date.substring(2,4) + '/' + timeSlot.date.substring(4)}"></span><span class="white-text time-slot" th:text="${timeSlot.time}"></span>
+            </td>
+        </tr>
+
+    </table>
+
+    <div th:replace="fragments\footer"></div>
+
+    <script type="text/javascript" th:src="@{/js/booking_time.js}"></script>
+</body>
+</html>

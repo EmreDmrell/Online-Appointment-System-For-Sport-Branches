@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Contact Us</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/contact.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+
+    <div id="body-container">
+        <div id="title-container">
+            <p id="contact-title">CONTACT US</p>
+            <p class="jack"><span>JACK'S </span><span>SPORT</span></p>
+        </div>
+        <div id="content-container">
+            <h2 class="h2-title">HEAD QUARTER</h2>
+            <p>Edif. 6, Loramendi Kalea, 4, </p>
+            <p>20500 arrasate, Gipuzkoa</p>
+            <p>customer.service@jackssport.com</p>
+            <p>+34 267 278 777</p>
+
+            <h2 class="h2-title">BILBAO</h2>
+            <p>+34 267 278 766</p>
+
+            <h2 class="h2-title">PAMPLONA</h2>
+            <p>+34 267 278 767</p>
+
+            <h2 class="h2-title">SAN SEBASTIAN</h2>
+            <p>+34 267 278 768</p>
+
+            <h2 class="h2-title">VITORIA</h2>
+            <p>+34 267 278 769</p>
+        </div>
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

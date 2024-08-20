@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Manage Users</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/manage_user.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" th:href="@{/photo/dumbbell_logo.png}">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="manage-user-title">manage users</p>
+    </div>
+
+    <table>
+        
+        <colgroup>
+            <col style="width: 5%">
+            <col style="width: 15%">
+            <col style="width: 15%">
+            <col style="width: 15%">
+            <col style="width: 30%">
+            <col style="width: 8%">
+            <col style="width: 12%">
+        </colgroup>
+        <tr>
+            <th>no</th>
+            <th>username</th>
+            <th>firstname</th>
+            <th>surname</th>
+            <th>email</th>
+            <th>role</th>
+            <th>actions</th>
+        </tr>
+        <tr th:each="user: ${userList}" th:if="${!user.role.getValue().equals('Admin')}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.role}"></td>
+            <td>
+                <div class="icon-container">
+                    <a th:href="@{'/admin/user/unban/' + ${user.id}}" title="unban"><div class="unban-user" onclick="return confirm('Are you sure?')"></div></a>
+                    <a th:href="@{'/admin/user/ban/' + ${user.id}}" title="ban"><div class="ban-user" onclick="return confirm('Are you sure?')"></div></a>
+                    <a th:href="@{'/admin/user/delete/' + ${user.id}}" title="delete"><div class="delete-user" onclick="return confirm('Are you sure?')"></div></a>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <div th:replace="fragments\footer"></div>
+
+</body>
+</html>

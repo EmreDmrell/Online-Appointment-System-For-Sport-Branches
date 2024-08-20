@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Feedback</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/feedback.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="feedback-title">Feedback</p>
+    </div>
+
+    <p id="feedback-description">Your feed back is important to us. Giving the feed back will help us improve our service. Thank you!</p>
+
+    <p class="question-title">What is the topic of your concern</p>
+
+    <form th:action="@{/feedback/save}" method="post" th:object="${feedback}">
+
+        <div class="checkboxes-container">
+            <label class="checkbox-container" for="service-feedback-checkbox">
+                <input type="radio" id="service-feedback-checkbox" name="feedback-type" th:field="*{topic}" th:value="service"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">service</span>
+            </label>
+    
+            <label class="checkbox-container" for="facility-feedback-checkbox">
+                <input type="radio" id="facility-feedback-checkbox" name="feedback-type" th:field="*{topic}" th:value="facility"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">facility</span>
+            </label>
+    
+            <label class="checkbox-container" for="overall-feedback-checkbox">
+                <input type="radio" id="overall-feedback-checkbox" name="feedback-type" th:field="*{topic}" th:value="overall"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">overall</span>
+            </label>
+    
+            <label class="checkbox-container" for="other-feedback-checkbox">
+                <input type="radio" id="other-feedback-checkbox" name="feedback-type" th:field="*{topic}" th:value="other"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">other</span>
+            </label>
+        </div>
+    
+        <p class="question-title">how would you rate our service</p>
+        <div class="star-rating-container">
+            <input type="radio" name="stars" id="star-a" th:field="*{star}" value="5"/>
+            <label for="star-a"></label>
+      
+            <input type="radio" name="stars" id="star-b" th:field="*{star}" value="4"/>
+            <label for="star-b"></label>
+        
+            <input type="radio" name="stars" id="star-c" th:field="*{star}" value="3"/>
+            <label for="star-c"></label>
+        
+            <input type="radio" name="stars" id="star-d" th:field="*{star}" value="2"/>
+            <label for="star-d"></label>
+        
+            <input type="radio" name="stars" id="star-e" th:field="*{star}" value="1"/>
+            <label for="star-e"></label>
+        </div>
+    
+        <p class="question-title">would you recommend Jack’s sports?</p>
+        <div class="like-container">
+            <input type="radio" name="like-dislike" id="like" th:field="*{recommend}" value="1"/>
+            <label for="like" id="thumbs-up"></label>
+            <p>yes</p>
+      
+            <input type="radio" name="like-dislike" id="dislike" th:field="*{recommend}" value="0"/>
+            <label for="dislike" id="thumbs-down"></label>
+            <p>no</p>
+        </div>
+    
+        <p class="question-title">Please leave your feedback below</p>
+        <textarea name="" id="review-textarea" cols="100" rows="10" th:field="*{body}"></textarea>
+
+        <p class="question-title">Would you like to remain anonymous for this feedback</p>
+
+        <div class="checkboxes-container">
+            <label class="checkbox-container" for="anonymouse-yes">
+                <input type="radio" id="anonymouse-yes" name="ano" th:value="0"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">yes</span>
+            </label>
+    
+            <label class="checkbox-container" for="anonymouse-no">
+                <input type="radio" id="anonymouse-no" name="ano" th:value="1"/>
+                <span class="checkmark"></span>
+                <span class="check-box-label">no</span>
+            </label>
+        </div>
+    
+        <button type="submit" class="normal-button" id="signup-button">Submit</button>
+        <!-- <a href="/feedback_sent" class="normal-button">submit</a> -->
+    </form>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>

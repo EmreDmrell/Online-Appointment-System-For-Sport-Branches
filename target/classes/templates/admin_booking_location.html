@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head> 
+    <title>Jack's - Location</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/bebas" rel="stylesheet">
+    <link th:href="@{/css/location.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerAndFooter.css}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/photo/dumbbell_logo.png">
+</head>
+<body>
+    <div th:replace="fragments\navbar"></div>
+    
+    <div id="secondary-nav">
+        <p id="location-title">location</p>
+        <p class="nav-span">
+            <span>choose a branch to see booking</span>
+        </p>
+        <p class="section-line"></p>
+    </div>
+
+    <div th:each="city: ${dic.keySet()}">
+        <p class="location-header" th:text="${city}" th:id="${city.toLowerCase().replace(' ', '_')}"></p>
+        <p class="section-line-place"></p>
+
+        <div class="locations-container">
+            <div class="place-container" th:each="branch: ${dic.get(city)}">
+                <p class="place-title admin_location" th:text="${branch.name}"></p>
+                <a th:href="@{'/admin/booking/' + ${branch.branchCode}}" class="normal-button">SELECT</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments\footer"></div>
+</body>
+</html>
